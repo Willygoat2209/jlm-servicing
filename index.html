@@ -317,18 +317,21 @@
   </div>
   <div class="contact-right reveal">
     <h3>Send a Message</h3>
-    <form onsubmit="handleSubmit(event)">
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d365eceb-48cb-45ef-b6ce-bf80467a651e" />
+      <input type="hidden" name="subject" value="New Quote Request — JLM Servicing" />
+      <input type="hidden" name="redirect" value="false" />
       <div class="frow">
-        <div class="fg"><label>First Name</label><input type="text" placeholder="John" required /></div>
-        <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+        <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required /></div>
+        <div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" /></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>Phone</label><input type="tel" placeholder="(501) 000-0000" /></div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(501) 000-0000" /></div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@email.com" /></div>
       </div>
       <div class="fg">
         <label>Service Needed</label>
-        <select>
+        <select name="service">
           <option value="">Select a service…</option>
           <option>Tree Removal</option>
           <option>Tree Trimming / Pruning</option>
@@ -338,8 +341,9 @@
           <option>Emergency Service</option>
         </select>
       </div>
-      <div class="fg"><label>Message</label><textarea placeholder="Describe your project…"></textarea></div>
-      <button type="submit" class="submit-btn">Request Free Quote →</button>
+      <div class="fg"><label>Message</label><textarea name="message" placeholder="Describe your project…"></textarea></div>
+      <button type="submit" class="submit-btn" id="submitBtn">Request Free Quote →</button>
+      <div id="formMsg" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:3px;font-size:0.9rem;text-align:center;"></div>
     </form>
   </div>
 </section>
@@ -361,13 +365,41 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  function handleSubmit(e) {
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.submit-btn');
-    btn.textContent = '✓ Sent! We\'ll be in touch soon.';
-    btn.style.background = 'var(--green-deep)';
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+    btn.textContent = 'Sending…';
     btn.disabled = true;
-  }
+
+    const formData = new FormData(this);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.success) {
+        msg.style.display = 'block';
+        msg.style.background = '#e8f5e0';
+        msg.style.color = '#2d5a1b';
+        msg.textContent = '✓ Message sent! We\'ll be in touch soon.';
+        this.reset();
+        btn.textContent = 'Request Free Quote →';
+        btn.disabled = false;
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      msg.style.display = 'block';
+      msg.style.background = '#fdecea';
+      msg.style.color = '#c0392b';
+      msg.textContent = '✗ Something went wrong. Please call us at (501) 351-7714.';
+      btn.textContent = 'Request Free Quote →';
+      btn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
