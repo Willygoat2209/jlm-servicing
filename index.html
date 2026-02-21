@@ -225,6 +225,48 @@
   <div class="stat-item"><div class="stat-num" style="font-size:1.6rem;letter-spacing:0.1em;">★★★★★</div><div class="stat-label">5-Star Rated</div></div>
 </div>
 
+<section class="contact" id="contact">
+  <div class="contact-left reveal">
+    <h2>Get Your Free Quote</h2>
+    <div class="cinfo">
+      <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Location</div><div class="cinfo-val">17 Daniel Dr, Sherwood, AR 72120</div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon">🕐</div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sun: 7AM – 7PM<br><span style="color:var(--green-light)">We'll get back to you as soon as possible</span></div></div></div>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <h3>Send a Message</h3>
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d365eceb-48cb-45ef-b6ce-bf80467a651e" />
+      <input type="hidden" name="subject" value="New Quote Request — JLM Servicing" />
+      <input type="hidden" name="redirect" value="false" />
+      <div class="frow">
+        <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required /></div>
+        <div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" /></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(501) 000-0000" /></div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@email.com" /></div>
+      </div>
+      <div class="fg">
+        <label>Service Needed</label>
+        <select name="service">
+          <option value="">Select a service…</option>
+          <option>Tree Removal</option>
+          <option>Tree Trimming / Pruning</option>
+          <option>Stump Grinding</option>
+          <option>Roof Replacement</option>
+          <option>Roof Repair</option>
+          <option>Emergency Service</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea name="message" placeholder="Describe your project…"></textarea></div>
+      <button type="submit" class="submit-btn" id="submitBtn">Request Free Quote →</button>
+      <div id="formMsg" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:3px;font-size:0.9rem;text-align:center;"></div>
+    </form>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="section-head reveal">
     <div class="section-tag">What We Do</div>
@@ -303,48 +345,6 @@
       <p>Honest about what needed to be done, fair pricing on my roof repair. Didn't try to upsell me. Customer for life.</p>
       <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
     </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="contact-left reveal">
-    <h2>Get Your Free Quote</h2>
-    <div class="cinfo">
-      <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Location</div><div class="cinfo-val">17 Daniel Dr, Sherwood, AR 72120</div></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon">🕐</div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sun: 7AM – 7PM<br><span style="color:var(--green-light)">We'll get back to you as soon as possible</span></div></div></div>
-    </div>
-  </div>
-  <div class="contact-right reveal">
-    <h3>Send a Message</h3>
-    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="d365eceb-48cb-45ef-b6ce-bf80467a651e" />
-      <input type="hidden" name="subject" value="New Quote Request — JLM Servicing" />
-      <input type="hidden" name="redirect" value="false" />
-      <div class="frow">
-        <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required /></div>
-        <div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" /></div>
-      </div>
-      <div class="frow">
-        <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(501) 000-0000" /></div>
-        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@email.com" /></div>
-      </div>
-      <div class="fg">
-        <label>Service Needed</label>
-        <select name="service">
-          <option value="">Select a service…</option>
-          <option>Tree Removal</option>
-          <option>Tree Trimming / Pruning</option>
-          <option>Stump Grinding</option>
-          <option>Roof Replacement</option>
-          <option>Roof Repair</option>
-          <option>Emergency Service</option>
-        </select>
-      </div>
-      <div class="fg"><label>Message</label><textarea name="message" placeholder="Describe your project…"></textarea></div>
-      <button type="submit" class="submit-btn" id="submitBtn">Request Free Quote →</button>
-      <div id="formMsg" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:3px;font-size:0.9rem;text-align:center;"></div>
-    </form>
   </div>
 </section>
 
