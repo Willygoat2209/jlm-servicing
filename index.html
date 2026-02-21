@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JLM Servicing — Tree & Roofing | Central Arkansas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-deep:  #2d5a1b;
+      --green-mid:   #3d7a22;
+      --green-light: #5a9e35;
+      --brown-dark:  #5c3d1e;
+      --brown-mid:   #7a5230;
+      --brown-light: #a07040;
+      --cream:       #f7f3ed;
+      --white:       #ffffff;
+      --dark:        #1a1a1a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 5%; height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--green-mid);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo img { height: 52px; display: block; }
+    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+    nav ul a { color: var(--brown-dark); font-size: 0.82rem; text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; transition: color 0.2s; }
+    nav ul a:hover { color: var(--green-mid); }
+    .nav-cta { background: var(--green-mid) !important; color: #fff !important; padding: 0.55rem 1.4rem; border-radius: 3px; }
+    .nav-cta:hover { background: var(--green-deep) !important; }
+
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; padding-top: 72px; }
+    .hero-left {
+      background: var(--green-deep);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 6% 6rem 8%; position: relative; overflow: hidden;
+    }
+    .hero-left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,60,13,0.92) 40%, rgba(26,60,13,0.6) 100%); z-index: 0; }
+    .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+    .hero-left > *:not(.hero-bg-img) { position: relative; z-index: 1; }
+    .hero-tag { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-light); margin-bottom: 1.2rem; font-weight: 700; }
+    .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 7vw, 7rem); line-height: 0.92; color: #fff; margin-bottom: 1.8rem; position: relative; z-index: 1; }
+    .hero h1 em { font-style: normal; display: block; color: var(--brown-light); }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 2.5rem; max-width: 380px; font-weight: 300; position: relative; z-index: 1; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-g { background: var(--green-light); color: #fff; padding: 1rem 2.2rem; border-radius: 3px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+    .btn-g:hover { background: var(--green-mid); transform: translateY(-2px); }
+    .btn-ghost { border: 2px solid rgba(255,255,255,0.35); color: #fff; padding: 1rem 2rem; border-radius: 3px; font-size: 0.9rem; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; font-weight: 700; transition: border-color 0.2s, background 0.2s; }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .hero-right { position: relative; overflow: hidden; min-height: 100%; }
+    .hero-right img.hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,60,13,0.7) 0%, transparent 50%); }
+    .hero-badge-float { position: absolute; bottom: 3rem; left: 2rem; right: 2rem; background: rgba(255,255,255,0.95); border-radius: 6px; padding: 1.4rem 1.6rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+    .hero-badge-logo img { width: 60px; }
+    .hero-badge-text strong { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.04em; }
+    .hero-badge-text span { font-size: 0.8rem; color: #777; }
+
+    .stats-bar { background: var(--brown-dark); display: flex; justify-content: center; }
+    .stat-item { flex: 1; max-width: 260px; padding: 2rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--brown-light); line-height: 1; }
+    .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.3rem; }
+
+    .services { padding: 6rem 6%; background: var(--white); }
+    .section-head { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-mid); font-weight: 700; margin-bottom: 0.6rem; }
+    .section-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--green-deep); letter-spacing: 0.04em; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: #e0d8cc; border: 1.5px solid #e0d8cc; border-radius: 8px; overflow: hidden; }
+    .svc { background: var(--white); padding: 2.8rem 2rem; text-align: center; transition: background 0.25s; }
+    .svc:hover { background: var(--cream); }
+    .svc-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+    .svc h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--green-deep); letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+    .svc p { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+    .emergency { background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%); padding: 5rem 6%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .emergency-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); color: #fff; letter-spacing: 0.04em; line-height: 1; }
+    .emergency-text p { color: rgba(255,255,255,0.65); margin-top: 0.5rem; font-size: 0.95rem; }
+    .emergency-phone { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; text-decoration: none; letter-spacing: 0.04em; background: rgba(255,255,255,0.12); padding: 0.6rem 2rem; border-radius: 4px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.2s; white-space: nowrap; }
+    .emergency-phone:hover { background: rgba(255,255,255,0.2); }
+
+    .about { display: grid; grid-template-columns: 1fr 1fr; }
+    .about-visual { position: relative; overflow: hidden; min-height: 500px; }
+    .about-visual img.about-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .about-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,60,13,0.55) 0%, rgba(26,60,13,0.75) 100%); }
+    .about-visual-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 6rem 5%; }
+    .about-logo { width: 160px; margin-bottom: 1.5rem; }
+    .about-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-align: center; }
+    .about-content { background: var(--cream); padding: 6rem 7%; display: flex; flex-direction: column; justify-content: center; }
+    .about-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 3.5vw, 3rem); color: var(--green-deep); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 1.2rem; }
+    .about-content p { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
+    .trust-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .trust-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #fff; border-radius: 4px; border-left: 3px solid var(--green-mid); }
+    .trust-item span { font-size: 1.2rem; }
+    .trust-item strong { font-size: 0.9rem; color: var(--green-deep); display: block; }
+    .trust-item small { font-size: 0.78rem; color: #888; }
+
+    .process { padding: 6rem 6%; background: var(--green-deep); }
+    .process .section-tag { color: var(--green-light); }
+    .process .section-head h2 { color: #fff; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 3rem; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; }
+    .step { padding: 3rem 1.5rem; text-align: center; background: rgba(255,255,255,0.03); transition: background 0.2s; }
+    .step:hover { background: rgba(255,255,255,0.07); }
+    .step-n { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(90,158,53,0.3); line-height: 1; }
+    .step h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #fff; letter-spacing: 0.04em; margin: 0.4rem 0; }
+    .step p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    .testimonials { padding: 6rem 6%; background: var(--cream); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testi { background: #fff; padding: 2rem; border-radius: 6px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); position: relative; }
+    .testi-quote { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: var(--green-light); opacity: 0.18; position: absolute; top: 0.5rem; left: 1rem; line-height: 1; }
+    .testi p { font-size: 0.92rem; color: #555; line-height: 1.7; padding-top: 1.5rem; margin-bottom: 1.5rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-deep); color: var(--brown-light); font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .testi-name { font-weight: 700; font-size: 0.88rem; color: var(--green-deep); }
+    .stars { color: #e8a000; font-size: 0.8rem; }
+
+    .contact { display: grid; grid-template-columns: 1fr 1.2fr; }
+    .contact-left { background: var(--green-deep); padding: 6rem 7%; display: flex; flex-direction: column; justify-content: center; }
+    .contact-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); color: #fff; letter-spacing: 0.04em; margin-bottom: 2rem; line-height: 1; }
+    .cinfo { display: flex; flex-direction: column; gap: 1.5rem; }
+    .cinfo-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .cinfo-icon { font-size: 1.4rem; margin-top: 0.1rem; }
+    .cinfo-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.2rem; }
+    .cinfo-val { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+    .cinfo-val a { color: #fff; text-decoration: none; font-weight: 700; }
+    .contact-right { background: var(--cream); padding: 6rem 7%; }
+    .contact-right h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--green-deep); letter-spacing: 0.04em; margin-bottom: 2rem; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { margin-bottom: 1.1rem; }
+    .fg label { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-mid); font-weight: 700; margin-bottom: 0.45rem; }
+    .fg input, .fg select, .fg textarea { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #ddd; border-radius: 3px; background: #fff; font-family: 'Lato', sans-serif; font-size: 0.9rem; color: var(--dark); outline: none; transition: border-color 0.2s; }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--green-mid); }
+    .fg textarea { min-height: 90px; resize: vertical; }
+    .submit-btn { width: 100%; padding: 1rem; background: var(--green-mid); color: #fff; border: none; border-radius: 3px; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .submit-btn:hover { background: var(--green-deep); }
+
+    footer { background: #111; color: rgba(255,255,255,0.45); padding: 2rem 6%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; }
+    footer img { height: 36px; opacity: 0.5; }
+    footer a { color: var(--green-light); text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 5rem 6%; min-height: 100vh; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .about, .contact { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .frow { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .stats-bar { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="logo.png" alt="JLM Servicing" /></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:5013517714">📞 (501) 351-7714</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <img src="treeservice.png" alt="" class="hero-bg-img" />
+    <div class="hero-tag">Central Arkansas · Est. 2009</div>
+    <h1>Tree & <em>Roofing</em> Experts</h1>
+    <p class="hero-sub">Quality work. Fair prices. Done right — every time.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-g">Get Free Quote</a>
+      <a href="tel:5013517714" class="btn-ghost">Call Now</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="treeservice2.png" alt="Tree service professionals at work" class="hero-photo" />
+    <div class="hero-right-overlay"></div>
+    <div class="hero-badge-float">
+      <div class="hero-badge-logo"><img src="logo.png" alt="JLM Servicing" /></div>
+      <div class="hero-badge-text">
+        <strong>Family Owned &amp; Operated</strong>
+        <span>Serving Central Arkansas for 15+ years</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Emergency Service</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free Estimates</div></div>
+  <div class="stat-item"><div class="stat-num">⭐⭐⭐⭐⭐</div><div class="stat-label">5-Star Rated</div></div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-head reveal">
+    <div class="section-tag">What We Do</div>
+    <h2>Our Services</h2>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc"><span class="svc-icon">🌲</span><h3>Tree Removal</h3><p>Any size, any situation. Safe removal with full cleanup and haul-off included.</p></div>
+    <div class="svc"><span class="svc-icon">✂️</span><h3>Trimming & Pruning</h3><p>Keep trees healthy, beautiful, and away from your roof and power lines.</p></div>
+    <div class="svc"><span class="svc-icon">🪨</span><h3>Stump Grinding</h3><p>Ground to grade, debris cleaned up. No trace left behind.</p></div>
+    <div class="svc"><span class="svc-icon">🏠</span><h3>Roof Replacement</h3><p>Full replacements with quality materials and expert installation.</p></div>
+    <div class="svc"><span class="svc-icon">🔧</span><h3>Roof Repair</h3><p>Leaks, storm damage, missing shingles — fixed fast and right.</p></div>
+    <div class="svc"><span class="svc-icon">⚡</span><h3>Emergency Response</h3><p>Storm knocked a tree down? We respond day or night — call now.</p></div>
+  </div>
+</section>
+
+<div class="emergency reveal">
+  <div class="emergency-text">
+    <h2>24-Hour Emergency Service</h2>
+    <p>Storm damage? Fallen tree? Don't wait — we respond fast.</p>
+  </div>
+  <a href="tel:5013517714" class="emergency-phone">(501) 351-7714</a>
+</div>
+
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <img src="treeservice.png" alt="JLM Servicing crew at work" class="about-photo" />
+    <div class="about-visual-overlay"></div>
+    <div class="about-visual-content">
+      <img src="logo.png" alt="JLM Servicing" class="about-logo" />
+      <div class="about-tagline">Family Owned &amp; Operated</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <h2>Arkansas Roots.<br>Built on Trust.</h2>
+    <p>JLM Servicing has been serving Central Arkansas for over 15 years. We're a local, family-owned crew that takes pride in every job — big or small.</p>
+    <div class="trust-list">
+      <div class="trust-item"><span>🛡️</span><div><strong>Fully Insured</strong><small>Your property is protected on every job</small></div></div>
+      <div class="trust-item"><span>💵</span><div><strong>Free Estimates</strong><small>No obligation, upfront pricing always</small></div></div>
+      <div class="trust-item"><span>📍</span><div><strong>Locally Owned</strong><small>We live here too — our reputation matters</small></div></div>
+      <div class="trust-item"><span>⚡</span><div><strong>Fast Response</strong><small>Same-day service often available</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process reveal">
+  <div class="section-head">
+    <div class="section-tag">How It Works</div>
+    <h2>Simple Process</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-n">01</div><h3>Call or Quote</h3><p>Reach out by phone or our form for a free, no-pressure estimate.</p></div>
+    <div class="step"><div class="step-n">02</div><h3>We Assess</h3><p>We visit, evaluate the job, and give you a clear quote on the spot.</p></div>
+    <div class="step"><div class="step-n">03</div><h3>We Work</h3><p>Our experienced crew arrives on time and gets the job done right.</p></div>
+    <div class="step"><div class="step-n">04</div><h3>Full Cleanup</h3><p>We haul everything away. Your yard is left clean — guaranteed.</p></div>
+  </div>
+</section>
+
+<section class="testimonials reveal">
+  <div class="section-head">
+    <div class="section-tag">Reviews</div>
+    <h2>What Customers Say</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="testi-quote">"</div>
+      <p>Came out same day after a storm. Had the tree cleaned up in a few hours and the price was very fair. Will use again!</p>
+      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="testi-quote">"</div>
+      <p>Best tree service in Central Arkansas. Trimmed several large trees, incredible results, left everything spotless.</p>
+      <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="testi-quote">"</div>
+      <p>Honest about what needed to be done, fair pricing on my roof repair. Didn't try to upsell me. Customer for life.</p>
+      <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left reveal">
+    <h2>Get Your Free Quote</h2>
+    <div class="cinfo">
+      <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Location</div><div class="cinfo-val">17 Daniel Dr, Sherwood, AR 72120</div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon">🕐</div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sun: 7AM – 7PM<br><span style="color:var(--green-light)">24/7 Emergency Available</span></div></div></div>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <h3>Send a Message</h3>
+    <form onsubmit="handleSubmit(event)">
+      <div class="frow">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="John" required /></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="(501) 000-0000" /></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+      </div>
+      <div class="fg">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Tree Removal</option>
+          <option>Tree Trimming / Pruning</option>
+          <option>Stump Grinding</option>
+          <option>Roof Replacement</option>
+          <option>Roof Repair</option>
+          <option>Emergency Service</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea placeholder="Describe your project…"></textarea></div>
+      <button type="submit" class="submit-btn">Request Free Quote →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <img src="logo.png" alt="JLM Servicing" />
+  <span>© 2025 JLM Servicing · Sherwood, AR · <a href="tel:5013517714">(501) 351-7714</a></span>
+  <span>Family Owned &amp; Operated</span>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.textContent = '✓ Sent! We\'ll be in touch soon.';
+    btn.style.background = 'var(--green-deep)';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
