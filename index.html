@@ -5,27 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary SEO -->
-  <title>JLM Servicing | Tree Removal & Roofing Services in Sherwood, AR</title>
-  <meta name="description" content="JLM Servicing offers professional tree removal, tree trimming, stump grinding, and roofing services in Sherwood and Central Arkansas. Family owned, free estimates. Call (501) 351-7714." />
+  <title>JLM Servicing | Tree & Roofing | Sherwood, AR</title>
+  <meta name="description" content="Tree removal, trimming, stump grinding & roofing in Central Arkansas. Family owned, 15+ years. Free estimates — (501) 351-7714." />
   <meta name="keywords" content="tree removal Sherwood AR, tree trimming Central Arkansas, stump grinding Arkansas, roofing Sherwood AR, emergency tree service Arkansas, tree service North Little Rock, tree service Jacksonville AR, roof repair Arkansas, JLM Servicing" />
   <meta name="author" content="JLM Servicing" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.jlmservicing.com/" />
+  <link rel="canonical" href="https://jlmservicing.netlify.app/" />
+
+  <!-- Preload LCP image for faster load -->
+  <link rel="preload" as="image" href="treeservice.png" />
 
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.jlmservicing.com/" />
-  <meta property="og:title" content="JLM Servicing | Tree Removal & Roofing in Central Arkansas" />
-  <meta property="og:description" content="Professional tree removal, trimming, stump grinding & roofing in Sherwood and Central Arkansas. Family owned with 15+ years experience. Free estimates — call (501) 351-7714." />
-  <meta property="og:image" content="https://www.jlmservicing.com/treeservice.png" />
+  <meta property="og:url" content="https://jlmservicing.netlify.app/" />
+  <meta property="og:title" content="JLM Servicing | Tree & Roofing | Sherwood, AR" />
+  <meta property="og:description" content="Tree removal, trimming, stump grinding & roofing in Central Arkansas. Family owned, 15+ years. Free estimates — (501) 351-7714." />
+  <meta property="og:image" content="https://jlmservicing.netlify.app/treeservice.png" />
   <meta property="og:site_name" content="JLM Servicing" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="JLM Servicing | Tree Removal & Roofing in Central Arkansas" />
-  <meta name="twitter:description" content="Professional tree removal, trimming, stump grinding & roofing in Central Arkansas. Free estimates — call (501) 351-7714." />
-  <meta name="twitter:image" content="https://www.jlmservicing.com/treeservice.png" />
+  <meta name="twitter:title" content="JLM Servicing | Tree & Roofing | Sherwood, AR" />
+  <meta name="twitter:description" content="Tree removal, trimming, stump grinding & roofing in Central Arkansas. Free estimates — (501) 351-7714." />
+  <meta name="twitter:image" content="https://jlmservicing.netlify.app/treeservice.png" />
 
   <!-- Geo -->
   <meta name="geo.region" content="US-AR" />
@@ -44,7 +47,7 @@
     "@type": "LocalBusiness",
     "name": "JLM Servicing",
     "description": "Professional tree removal, tree trimming, stump grinding, and roofing services in Sherwood and Central Arkansas.",
-    "url": "https://www.jlmservicing.com",
+    "url": "https://jlmservicing.netlify.app",
     "telephone": "+15013517714",
     "address": {
       "@type": "PostalAddress",
@@ -61,7 +64,7 @@
     },
     "openingHours": "Mo-Su 07:00-19:00",
     "priceRange": "$$",
-    "image": "https://www.jlmservicing.com/logo.png",
+    "image": "https://jlmservicing.netlify.app/logo.png",
     "sameAs": ["https://www.facebook.com/JLMTreeServicing"],
     "areaServed": [
       { "@type": "City", "name": "Sherwood" },
@@ -85,7 +88,11 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <!-- Preconnect for faster font load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" /></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -245,11 +252,53 @@
       .about, .contact { grid-template-columns: 1fr; }
       nav ul { display: none; }
       .frow { grid-template-columns: 1fr; }
+      .contact-left { padding: 3rem 6%; }
+      .contact-right { padding: 3rem 6%; }
+      .about-content { padding: 3rem 6%; }
+      .about-visual { min-height: 360px; }
+      .emergency { padding: 3rem 6%; flex-direction: column; text-align: center; }
+      .emergency-phone { font-size: 2.5rem; }
     }
     @media (max-width: 600px) {
       .services-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       .stats-bar { flex-wrap: wrap; }
+      .stat-item { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      /* Larger tap targets and font sizes for mobile */
+      nav { padding: 0 4%; height: 64px; }
+      .nav-name { font-size: 1.2rem; }
+      .hero h1 { font-size: 3.2rem; }
+      .hero-sub { font-size: 1rem; }
+      .btn-g, .btn-ghost { padding: 1rem 1.6rem; font-size: 1rem; min-height: 48px; display: flex; align-items: center; justify-content: center; }
+      .hero-actions { gap: 0.8rem; }
+      .hero-left { padding: 5rem 5% 4rem; }
+      section { padding: 4rem 5%; }
+      .services { padding: 4rem 5%; }
+      .process { padding: 4rem 5%; }
+      .testimonials { padding: 4rem 5%; }
+      .section-head h2 { font-size: 2.2rem; }
+      .svc { padding: 2rem 1.5rem; }
+      .svc h3 { font-size: 1.3rem; }
+      .svc p { font-size: 0.95rem; }
+      .step { padding: 2rem 1rem; }
+      .fg input, .fg select, .fg textarea { font-size: 1rem; padding: 0.85rem 1rem; min-height: 48px; }
+      .fg select { min-height: 48px; }
+      .submit-btn { font-size: 1rem; padding: 1.1rem; min-height: 52px; }
+      .fg label { font-size: 0.8rem; }
+      .testi { padding: 1.5rem; }
+      .testi p { font-size: 1rem; }
+      .emergency-text h2 { font-size: 2rem; }
+      .emergency-phone { font-size: 2rem; padding: 0.8rem 1.5rem; min-height: 56px; display: flex; align-items: center; }
+      .about-content h2 { font-size: 2rem; }
+      .about-content p { font-size: 1rem; }
+      .trust-item { padding: 1rem 1.2rem; }
+      .trust-item strong { font-size: 1rem; }
+      .trust-item small { font-size: 0.85rem; }
+      .contact-left h2 { font-size: 2.2rem; }
+      .cinfo-val { font-size: 1rem; }
+      .cinfo-val a { font-size: 1.1rem; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 5%; gap: 1.2rem; }
+      .stat-num { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -275,7 +324,7 @@
 
 <section class="hero" aria-label="Hero — Tree and Roofing Services in Central Arkansas">
   <div class="hero-left">
-    <img src="treeservice.png" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" />
+    <img src="treeservice3.png" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
     <div class="hero-tag">Central Arkansas · Est. 2009</div>
     <h1>Tree & <em>Roofing</em> Experts</h1>
     <p class="hero-sub">Quality work. Fair prices. Done right — every time.</p>
@@ -285,7 +334,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="treeservice2.png" alt="Tree service professionals at work" class="hero-photo" />
+    <img src="treeservice2.png" alt="Tree service professionals at work" class="hero-photo" loading="lazy" />
     <div class="hero-right-overlay"></div>
     <div class="hero-badge-float">
       <div class="hero-badge-logo"><img src="logo.png" alt="JLM Servicing" /></div>
@@ -371,7 +420,7 @@
 
 <section class="about" id="about" aria-label="About JLM Servicing">
   <div class="about-visual reveal">
-    <img src="treeservice3.png" alt="JLM Servicing professional tree crew in Sherwood Arkansas" class="about-photo" />
+    <img src="treeservice.png" alt="JLM Servicing professional tree crew in Sherwood Arkansas" class="about-photo" loading="lazy" />
     <div class="about-visual-overlay"></div>
     <div class="about-visual-content">
       <img src="logo.png" alt="JLM Servicing" class="about-logo" />
