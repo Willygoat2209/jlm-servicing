@@ -173,12 +173,6 @@
     .svc h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--green-deep); letter-spacing: 0.04em; margin-bottom: 0.6rem; }
     .svc p { font-size: 0.88rem; color: #666; line-height: 1.6; }
 
-    .emergency { background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%); padding: 5rem 6%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .emergency-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); color: #fff; letter-spacing: 0.04em; line-height: 1; }
-    .emergency-text p { color: rgba(255,255,255,0.65); margin-top: 0.5rem; font-size: 0.95rem; }
-    .emergency-phone { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; text-decoration: none; letter-spacing: 0.04em; background: rgba(255,255,255,0.12); padding: 0.6rem 2rem; border-radius: 4px; border: 2px solid rgba(255,255,255,0.3); transition: background 0.2s; white-space: nowrap; }
-    .emergency-phone:hover { background: rgba(255,255,255,0.2); }
-
     .about { display: grid; grid-template-columns: 1fr 1fr; }
     .about-visual { position: relative; overflow: hidden; min-height: 500px; }
     .about-visual img.about-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -256,8 +250,6 @@
       .contact-right { padding: 3rem 6%; }
       .about-content { padding: 3rem 6%; }
       .about-visual { min-height: 360px; }
-      .emergency { padding: 3rem 6%; flex-direction: column; text-align: center; }
-      .emergency-phone { font-size: 2.5rem; }
     }
     @media (max-width: 600px) {
       .services-grid { grid-template-columns: 1fr; }
@@ -287,8 +279,6 @@
       .fg label { font-size: 0.8rem; }
       .testi { padding: 1.5rem; }
       .testi p { font-size: 1rem; }
-      .emergency-text h2 { font-size: 2rem; }
-      .emergency-phone { font-size: 2rem; padding: 0.8rem 1.5rem; min-height: 56px; display: flex; align-items: center; }
       .about-content h2 { font-size: 2rem; }
       .about-content p { font-size: 1rem; }
       .trust-item { padding: 1rem 1.2rem; }
@@ -318,18 +308,18 @@
       Facebook
     </a></li>
     <li><a href="tel:5013517714">📞 (501) 351-7714</a></li>
-    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
 
 <section class="hero" aria-label="Hero — Tree and Roofing Services in Central Arkansas">
   <div class="hero-left">
-    <img src="treeservice3.png" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
+    <img src="treeservice.png" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
     <div class="hero-tag">Central Arkansas · Est. 2009</div>
     <h1>Tree & <em>Roofing</em> Experts</h1>
     <p class="hero-sub">Quality work. Fair prices. Done right — every time.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-g">Get Free Quote</a>
+      <a href="#contact" class="btn-g">Get in Touch</a>
       <a href="tel:5013517714" class="btn-ghost">Call Now</a>
     </div>
   </div>
@@ -353,9 +343,9 @@
   <div class="stat-item"><div class="stat-num" style="font-size:1.6rem;letter-spacing:0.1em;">★★★★★</div><div class="stat-label">5-Star Rated</div></div>
 </div>
 
-<section class="contact" id="contact" aria-label="Contact and Free Quote Form">
+<section class="contact" id="contact" aria-label="Contact JLM Servicing">
   <div class="contact-left reveal">
-    <h2>Get Your Free Quote</h2>
+    <h2>Let's Talk</h2>
     <div class="cinfo">
       <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
       <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Location</div><div class="cinfo-val">17 Daniel Dr, Sherwood, AR 72120</div></div></div>
@@ -366,7 +356,7 @@
     <h3>Send a Message</h3>
     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="d365eceb-48cb-45ef-b6ce-bf80467a651e" />
-      <input type="hidden" name="subject" value="New Quote Request — JLM Servicing" />
+      <input type="hidden" name="subject" value="New Contact — JLM Servicing" />
       <input type="hidden" name="redirect" value="false" />
       <div class="frow">
         <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required /></div>
@@ -385,11 +375,12 @@
           <option>Stump Grinding</option>
           <option>Roof Replacement</option>
           <option>Roof Repair</option>
-          <option>Emergency Service</option>
+          <option>Roofing Upgrade</option>
+          <option>Other</option>
         </select>
       </div>
       <div class="fg"><label>Message</label><textarea name="message" placeholder="Describe your project…"></textarea></div>
-      <button type="submit" class="submit-btn" id="submitBtn">Request Free Quote →</button>
+      <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
       <div id="formMsg" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:3px;font-size:0.9rem;text-align:center;"></div>
     </form>
   </div>
@@ -406,17 +397,9 @@
     <div class="svc"><span class="svc-icon">🪨</span><h3>Stump Grinding</h3><p>Ground to grade, debris cleaned up. No trace left behind.</p></div>
     <div class="svc"><span class="svc-icon">🏠</span><h3>Roof Replacement</h3><p>Full replacements with quality materials and expert installation.</p></div>
     <div class="svc"><span class="svc-icon">🔧</span><h3>Roof Repair</h3><p>Leaks, storm damage, missing shingles — fixed fast and right.</p></div>
-    <div class="svc"><span class="svc-icon">⚡</span><h3>Emergency Response</h3><p>Storm knocked a tree down? Give us a call and we'll get back to you as soon as possible.</p></div>
+    <div class="svc"><span class="svc-icon">⬆️</span><h3>Roofing Upgrades</h3><p>Upgrade your existing roof with better materials, improved insulation, and modern finishes that add value and curb appeal.</p></div>
   </div>
 </section>
-
-<div class="emergency reveal">
-  <div class="emergency-text">
-    <h2>Emergency Tree Service</h2>
-    <p>Storm damage? Fallen tree? Call us and we'll get back to you as soon as possible.</p>
-  </div>
-  <a href="tel:5013517714" class="emergency-phone">(501) 351-7714</a>
-</div>
 
 <section class="about" id="about" aria-label="About JLM Servicing">
   <div class="about-visual reveal">
