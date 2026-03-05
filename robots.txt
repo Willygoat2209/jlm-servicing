@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jlmservicing.netlify.app/sitemap.xml
+Sitemap: https://jlmservicing.com/sitemap.xml
