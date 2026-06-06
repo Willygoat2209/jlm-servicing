@@ -503,10 +503,10 @@
     Follow us on Facebook
   </a>
 </footer>
-        <a href="tel:5013517714" style="
+<a href="tel:5013517714" id="stickyCall" style="
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 24px;
+  right: 24px;
   background: #2d5a1b;
   color: white;
   padding: 14px 22px;
@@ -516,12 +516,11 @@
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   z-index: 9999;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 8px;
-">
-  📞 Call Now
-</a>
+  font-family: 'Lato', sans-serif;
+">📞 Call Now</a>
 
 <script>
   // Hamburger menu
@@ -529,6 +528,11 @@
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+  function checkStickyBtn() {
+    document.getElementById('stickyCall').style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+  }
+  checkStickyBtn();
+  window.addEventListener('resize', checkStickyBtn);
 
   // Form submission
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
