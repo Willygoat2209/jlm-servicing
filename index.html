@@ -309,7 +309,7 @@
 
 <nav aria-label="Main navigation">
   <a href="#" class="nav-logo" style="text-decoration:none;">
-    <img src="logo.webp" alt="JLM Servicing" />
+    <img src="logo.webp" alt="" />
     <span class="nav-name">JLM <span>Servicing</span></span>
   </a>
   <ul>
@@ -337,7 +337,7 @@
   <a href="https://www.facebook.com/JLMTreeServicing" target="_blank">Facebook</a>
   <a href="#contact" class="mob-cta" onclick="closeMobileMenu()">Get in Touch</a>
 </div>
-
+<main>
 <section class="hero" aria-label="Hero — Tree and Roofing Services in Central Arkansas">
   <div class="hero-left">
     <img src="treeservice.webp" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
@@ -394,8 +394,8 @@
       </div>
       <div class="fg"><label>Address</label><input type="text" name="address" placeholder="123 Main St Sherwood AR" /></div>
       <div class="fg">
-        <label>Service Needed</label>
-        <select name="service">
+        <label for="service">Service Needed</label>
+<select name="service" id="service">
           <option value="">Select a service…</option>
           <option>Tree Removal</option>
           <option>Tree Trimming / Pruning</option>
@@ -406,7 +406,7 @@
           <option>Other</option>
         </select>
       </div>
-      <div class="fg"><label>Description of Job - in order to serve you best, please supply as many specific details about the estimate you need.</label><textarea name="message" placeholder="Describe your project…"></textarea></div>
+      <div class="fg"><label for="message">Description of Job - in order to serve you best, please supply as many specific details about the estimate you need.</label><textarea name="message" id="message" placeholder="Describe your project…"></textarea></div>
       <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
       <div id="formMsg" style="display:none;margin-top:1rem;padding:0.9rem;border-radius:3px;font-size:0.9rem;text-align:center;"></div>
     </form>
@@ -491,7 +491,7 @@
     </a>
   </div>
 </section>
-
+</main>
 <footer role="contentinfo" aria-label="JLM Servicing footer">
   <div style="display:flex;align-items:center;gap:0.8rem;">
     <img src="logo.webp" alt="JLM Servicing" />
