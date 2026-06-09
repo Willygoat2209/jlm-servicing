@@ -16,9 +16,8 @@
   <link rel="alternate" hreflang="x-default" href="https://jlmservicing.com/" />
 
   <!-- Preload LCP image for faster load -->
-  <link rel="preload" as="image" href="treeservice.png" />
-  <link rel="preload" as="image" href="treeservice2.png" />
-
+<link rel="preload" as="image" href="treeservice.webp" />
+<link rel="preload" as="image" href="treeservice2.webp" />
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jlmservicing.com/" />
@@ -310,7 +309,7 @@
 
 <nav aria-label="Main navigation">
   <a href="#" class="nav-logo" style="text-decoration:none;">
-    <img src="logo.png" alt="JLM Servicing" />
+    <img src="logo.webp" alt="JLM Servicing" />
     <span class="nav-name">JLM <span>Servicing</span></span>
   </a>
   <ul>
@@ -341,7 +340,7 @@
 
 <section class="hero" aria-label="Hero — Tree and Roofing Services in Central Arkansas">
   <div class="hero-left">
-    <img src="treeservice.png" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
+    <img src="treeservice.webp" alt="JLM Servicing tree removal crew working in Central Arkansas" class="hero-bg-img" fetchpriority="high" />
     <div class="hero-tag">Sherwood, AR · Serving Central Arkansas</div>
     <h1>Tree & <em>Roofing</em> Experts</h1>
     <p class="hero-sub">Your local tree and roofing experts in Sherwood, AR. JLM Servicing — tree removal, roof repair, and roofing services. Family owned, fast response.</p>
@@ -351,10 +350,10 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="treeservice2.png" alt="Tree service professionals at work" class="hero-photo" fetchpriority="high" />
+    <img src="treeservice2.webp" alt="Tree service professionals at work" class="hero-photo" fetchpriority="high" />
     <div class="hero-right-overlay"></div>
     <div class="hero-badge-float">
-      <div class="hero-badge-logo"><img src="logo.png" alt="JLM Servicing" /></div>
+      <div class="hero-badge-logo"><img src="logo.webp" alt="JLM Servicing" /></div>
       <div class="hero-badge-text">
         <strong>Family Owned &amp; Operated</strong>
         <span>Serving Central Arkansas for 15+ years</span>
@@ -432,10 +431,10 @@
 
 <section class="about" id="about" aria-label="About JLM Servicing">
   <div class="about-visual reveal">
-    <img src="treeservice3.png" alt="JLM Servicing professional tree crew in Sherwood Arkansas" class="about-photo" loading="lazy" />
+    <img src="treeservice3.webp" alt="JLM Servicing professional tree crew in Sherwood Arkansas" class="about-photo" loading="lazy" />
     <div class="about-visual-overlay"></div>
     <div class="about-visual-content">
-      <img src="logo.png" alt="JLM Servicing" class="about-logo" />
+      <img src="logo.webp" alt="JLM Servicing" class="about-logo" />
       <div class="about-tagline">Family Owned &amp; Operated</div>
     </div>
   </div>
@@ -495,7 +494,7 @@
 
 <footer role="contentinfo" aria-label="JLM Servicing footer">
   <div style="display:flex;align-items:center;gap:0.8rem;">
-    <img src="logo.png" alt="JLM Servicing" />
+    <img src="logo.webp" alt="JLM Servicing" />
     <span style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:rgba(255,255,255,0.7);letter-spacing:0.06em;">JLM <span style="color:var(--green-light)">Servicing</span></span>
   </div>
   <span>© 2026 JLM Servicing · Tree Removal · Stump Grinding · Root Removal · Roofing · Sherwood, AR · Serving Central Arkansas · <a href="tel:5013517714">(501) 351-7714</a></span>
@@ -533,8 +532,11 @@
     document.getElementById('stickyCall').style.display = window.innerWidth <= 768 ? 'flex' : 'none';
   }
   checkStickyBtn();
-  window.addEventListener('resize', checkStickyBtn);
-
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkStickyBtn, 100);
+  });
   // Form submission
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
