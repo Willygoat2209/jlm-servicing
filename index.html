@@ -79,6 +79,11 @@
     "priceRange": "$$",
     "image": "https://jlmservicing.com/logo.png",
     "sameAs": ["https://www.facebook.com/JLMTreeServicing"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "107"
+    },
     "areaServed": [
       { "@type": "City", "name": "Sherwood" },
       { "@type": "City", "name": "North Little Rock" },
@@ -351,6 +356,11 @@
     .submit-btn { width: 100%; padding: 1rem; background: var(--green-mid); color: #fff; border: none; border-radius: 3px; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
     .submit-btn:hover { background: var(--green-deep); }
 
+    .areas { padding: 3rem 6%; background: var(--white); text-align: center; }
+    .areas h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--green-deep); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .areas ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1rem; font-size: 0.9rem; color: #555; }
+    .areas ul li:not(:last-child)::after { content: '·'; margin-left: 1rem; color: var(--green-mid); }
+
     footer { background: #111; color: rgba(255,255,255,0.45); padding: 2rem 6%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; }
     footer img { height: 36px; opacity: 0.5; }
     footer a { color: var(--green-light); text-decoration: none; }
@@ -427,7 +437,7 @@
 
 <nav aria-label="Main navigation">
   <a href="#" class="nav-logo" style="text-decoration:none;">
-    <img src="logo.webp" alt="" />
+    <img src="logo.webp" alt="JLM Servicing logo" />
     <span class="nav-name">JLM <span>Servicing</span></span>
   </a>
   <ul>
@@ -695,13 +705,25 @@
     </div>
   </div>
 
-  <div style="text-align:center;margin-top:2.5rem;">
-    <a href="https://maps.app.goo.gl/CWFjJGoiNzfHj7fH9" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;background:#fff;border:2px solid #e0d8cc;padding:0.9rem 2rem;border-radius:4px;font-family:'Lato',sans-serif;font-weight:700;font-size:0.9rem;color:#2d5a1b;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.07);letter-spacing:0.06em;text-transform:uppercase;">
-      <span style="color:#e8a000;font-size:1.1rem;">★★★★★</span> See Our Google Reviews
-    </a>
-  </div>
+</section>
+
+<section style="padding: 4rem 6%; background: var(--cream);" aria-label="Live Google Reviews">
+  <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-c7291948-0a18-46ab-a467-bdfc896c432c" data-elfsight-app-lazy></div>
 </section>
 </main>
+<section class="areas" id="areas" aria-label="Areas We Serve">
+  <h3>Areas We Serve</h3>
+  <ul>
+    <li>Sherwood, AR</li>
+    <li>North Little Rock, AR</li>
+    <li>Jacksonville, AR</li>
+    <li>Little Rock, AR</li>
+    <li>Cabot, AR</li>
+  </ul>
+</section>
+
 <footer role="contentinfo" aria-label="JLM Servicing footer">
   <div style="display:flex;align-items:center;gap:0.8rem;">
     <img src="logo.webp" alt="JLM Servicing" />
