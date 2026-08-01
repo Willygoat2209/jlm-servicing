@@ -213,8 +213,38 @@
     .step h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #fff; letter-spacing: 0.04em; margin: 0.4rem 0; }
     .step p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
-    .testimonials { padding: 6rem 6%; background: var(--cream); }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testimonials { padding: 6rem 0 6rem; background: var(--cream); }
+    .testimonials .section-head { padding: 0 6%; }
+
+    /* Scrolling reviews marquee — .testi box itself is untouched (same size/design) */
+    .testi-scroll-wrap {
+      margin-top: 3rem;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, black 4%, black 96%, transparent 100%);
+    }
+    .testi-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      padding: 0 6%;
+      animation: testiScroll 55s linear infinite;
+    }
+    .testi-scroll-wrap:hover .testi-track,
+    .testi-track:focus-within {
+      animation-play-state: paused;
+    }
+    .testi-track .testi {
+      flex: 0 0 360px;
+    }
+    @keyframes testiScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .testi-track { animation: none; }
+    }
+
     .testi { background: #fff; padding: 2rem; border-radius: 6px; box-shadow: 0 2px 16px rgba(0,0,0,0.05); position: relative; }
     .testi-quote { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: var(--green-light); opacity: 0.18; position: absolute; top: 0.5rem; left: 1rem; line-height: 1; }
     .testi p { font-size: 0.92rem; color: #555; line-height: 1.7; padding-top: 1.5rem; margin-bottom: 1.5rem; }
@@ -264,7 +294,6 @@
       .hero-left { padding: 5rem 6%; min-height: 100vh; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
-      .testi-grid { grid-template-columns: 1fr; }
       .about, .contact { grid-template-columns: 1fr; }
       nav ul { display: none; }
       .nav-hamburger { display: flex; }
@@ -289,7 +318,8 @@
       section { padding: 4rem 5%; }
       .services { padding: 4rem 5%; }
       .process { padding: 4rem 5%; }
-      .testimonials { padding: 4rem 5%; }
+      .testimonials { padding: 4rem 0; }
+      .testi-track .testi { flex: 0 0 82vw; }
       .section-head h2 { font-size: 2.2rem; }
       .svc { padding: 2rem 1.5rem; }
       .svc h3 { font-size: 1.3rem; }
@@ -480,23 +510,95 @@
     <div class="section-tag">Reviews</div>
     <h2>What Customers Say</h2>
   </div>
-  <div class="testi-grid">
-    <div class="testi">
-      <div class="testi-quote">"</div>
-      <p>Best stump grinding service in Central Arkansas. Had a huge stump removed in Sherwood and they left the yard spotless. Highly recommend JLM!</p>
-      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
-    </div>
-    <div class="testi">
-      <div class="testi-quote">"</div>
-      <p>Best tree removal service in Central Arkansas. Trimmed several large trees in North Little Rock, incredible results, left everything spotless.</p>
-      <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
-    </div>
-    <div class="testi">
-      <div class="testi-quote">"</div>
-      <p>Honest about what needed to be done, fair pricing on my roof repair in Jacksonville. Didn't try to upsell me. Customer for life.</p>
-      <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+
+  <div class="testi-scroll-wrap">
+    <div class="testi-track" id="testiTrack">
+      <!-- Set A -->
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Best stump grinding service in Central Arkansas. Had a huge stump removed in Sherwood and they left the yard spotless. Highly recommend JLM!</p>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Best tree removal service in Central Arkansas. Trimmed several large trees in North Little Rock, incredible results, left everything spotless.</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Honest about what needed to be done, fair pricing on my roof repair in Jacksonville. Didn't try to upsell me. Customer for life.</p>
+        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Second time using JLM and just as impressed as the first. Quick response, fair pricing, and the crew treated our yard like it was their own.</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Had a huge oak leaning on the house after a storm. Got several quotes and JLM's was the best by far — Luke even showed us proof of insurance before starting.</p>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Just needed the canopy raised on one tree, and they still brought the same care and communication as a bigger job. Cleanup was spotless.</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Our neighbor recommended JLM and we understand why now. They even cleared debris that landed on the neighbor's driveway without being asked.</p>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"</div>
+        <p>Needed three trees down in a tight backyard and figured it'd take all day. Crew handled it fast, careful, and the price was more than fair.</p>
+        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+
+      <!-- Set B (duplicate for seamless loop) -->
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Best stump grinding service in Central Arkansas. Had a huge stump removed in Sherwood and they left the yard spotless. Highly recommend JLM!</p>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Best tree removal service in Central Arkansas. Trimmed several large trees in North Little Rock, incredible results, left everything spotless.</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Honest about what needed to be done, fair pricing on my roof repair in Jacksonville. Didn't try to upsell me. Customer for life.</p>
+        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Second time using JLM and just as impressed as the first. Quick response, fair pricing, and the crew treated our yard like it was their own.</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Had a huge oak leaning on the house after a storm. Got several quotes and JLM's was the best by far — Luke even showed us proof of insurance before starting.</p>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Just needed the canopy raised on one tree, and they still brought the same care and communication as a bigger job. Cleanup was spotless.</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Our neighbor recommended JLM and we understand why now. They even cleared debris that landed on the neighbor's driveway without being asked.</p>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
+      <div class="testi" aria-hidden="true">
+        <div class="testi-quote">"</div>
+        <p>Needed three trees down in a tight backyard and figured it'd take all day. Crew handled it fast, careful, and the price was more than fair.</p>
+        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars">★★★★★</div></div></div>
+      </div>
     </div>
   </div>
+
   <div style="text-align:center;margin-top:2.5rem;">
     <a href="https://maps.app.goo.gl/CWFjJGoiNzfHj7fH9" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;background:#fff;border:2px solid #e0d8cc;padding:0.9rem 2rem;border-radius:4px;font-family:'Lato',sans-serif;font-weight:700;font-size:0.9rem;color:#2d5a1b;text-decoration:none;box-shadow:0 2px 12px rgba(0,0,0,0.07);letter-spacing:0.06em;text-transform:uppercase;">
       <span style="color:#e8a000;font-size:1.1rem;">★★★★★</span> See Our Google Reviews
