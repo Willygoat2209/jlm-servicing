@@ -57,7 +57,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["HomeAndConstructionBusiness", "RoofingContractor"],
     "name": "JLM Servicing",
     "description": "Professional tree removal, tree trimming, stump grinding, and roofing services in Sherwood and Central Arkansas.",
     "url": "https://jlmservicing.com",
@@ -75,7 +75,13 @@
       "latitude": 34.8151,
       "longitude": -92.1829
     },
-    "openingHours": "Mo-Su 07:00-19:00",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "07:00",
+      "closes": "19:00"
+    },
+    "hasMap": "https://maps.app.goo.gl/CWFjJGoiNzfHj7fH9",
     "priceRange": "$$",
     "image": "https://jlmservicing.com/logo.png",
     "sameAs": ["https://www.facebook.com/JLMTreeServicing"],
