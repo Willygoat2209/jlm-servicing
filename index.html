@@ -367,7 +367,10 @@
 
     /* Mobile hamburger */
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--green-deep); border-radius: 2px; transition: 0.3s; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--green-deep); border-radius: 2px; transition: transform 0.3s, opacity 0.2s; }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-mobile { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-top: 2px solid var(--green-mid); box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 199; padding: 1rem 0; }
     .nav-mobile.open { display: block; }
     .nav-mobile a { display: block; padding: 1rem 6%; font-size: 1rem; color: var(--brown-dark); text-decoration: none; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,0.05); }
@@ -737,8 +740,14 @@
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('active');
+  }
   // Form submission
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
