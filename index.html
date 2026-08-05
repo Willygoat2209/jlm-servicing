@@ -265,7 +265,7 @@
     .about-content p { font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
     .trust-list { display: flex; flex-direction: column; gap: 0.8rem; }
     .trust-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: #fff; border-radius: 4px; border-left: 3px solid var(--green-mid); }
-    .trust-item span { font-size: 1.2rem; }
+    .trust-item span { color: var(--green-mid); flex-shrink: 0; display: flex; }
     .trust-item strong { font-size: 0.9rem; color: var(--green-deep); display: block; }
     .trust-item small { font-size: 0.78rem; color: #888; }
 
@@ -317,31 +317,36 @@
     .testi-author { display: flex; align-items: center; gap: 0.8rem; }
     .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-deep); color: var(--brown-light); font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .testi-name { font-weight: 700; font-size: 0.88rem; color: var(--green-deep); }
-    .stars { color: #e8a000; font-size: 0.8rem; }
+    .stars { display: flex; align-items: center; gap: 2px; }
+    .stars svg { width: 13px; height: 13px; fill: #e8a000; }
+    .stat-num.stars { justify-content: center; }
+    .stat-num.stars svg { width: 24px; height: 24px; }
 
     .faq { padding: 4rem 6%; background: var(--white); }
     .faq .section-head { margin-bottom: 2rem; }
     .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.6rem; }
     .faq-item { border: 1.5px solid #e0d8cc; border-radius: 6px; background: var(--cream); overflow: hidden; }
-    .faq-item summary {
-      list-style: none; cursor: pointer; padding: 1rem 1.4rem;
+    .faq-q {
+      width: 100%; text-align: left; cursor: pointer; padding: 1rem 1.4rem; border: none; background: none;
       font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; letter-spacing: 0.02em;
       color: var(--green-deep); display: flex; justify-content: space-between; align-items: center; gap: 1rem;
     }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after {
-      content: '+'; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.2rem;
-      color: var(--green-mid); flex-shrink: 0; transition: transform 0.2s;
+    .faq-icon {
+      font-family: 'Lato', sans-serif; font-weight: 700; font-size: 1.2rem;
+      color: var(--green-mid); flex-shrink: 0; transition: transform 0.25s;
     }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item p { font-size: 0.9rem; color: #555; line-height: 1.6; padding: 0 1.4rem 1.1rem; }
+    .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-a-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+    .faq-a-wrap.open { grid-template-rows: 1fr; }
+    .faq-a-inner { overflow: hidden; }
+    .faq-a-inner p { font-size: 0.9rem; color: #555; line-height: 1.6; padding: 0 1.4rem 1.1rem; }
 
     .contact { display: grid; grid-template-columns: 1fr 1.2fr; }
     .contact-left { background: var(--green-deep); padding: 6rem 7%; display: flex; flex-direction: column; justify-content: center; }
     .contact-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); color: #fff; letter-spacing: 0.04em; margin-bottom: 2rem; line-height: 1; }
     .cinfo { display: flex; flex-direction: column; gap: 1.5rem; }
     .cinfo-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .cinfo-icon { font-size: 1.4rem; margin-top: 0.1rem; }
+    .cinfo-icon { color: var(--green-light); margin-top: 0.1rem; display: flex; }
     .cinfo-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.2rem; }
     .cinfo-val { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
     .cinfo-val a { color: #fff; text-decoration: none; font-weight: 700; }
@@ -451,7 +456,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       Facebook
     </a></li>
-    <li><a href="tel:5013517714">📞 (501) 351-7714</a></li>
+    <li><a href="tel:5013517714" style="display:flex;align-items:center;gap:0.4rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (501) 351-7714
+    </a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
@@ -464,7 +472,10 @@
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-  <a href="tel:5013517714">📞 (501) 351-7714</a>
+  <a href="tel:5013517714" style="display:flex;align-items:center;gap:0.5rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (501) 351-7714
+  </a>
   <a href="https://www.facebook.com/JLMTreeServicing" target="_blank">Facebook</a>
   <a href="#contact" class="mob-cta" onclick="closeMobileMenu()">Get in Touch</a>
 </div>
@@ -494,19 +505,19 @@
 </section>
 
 <div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-item"><div class="stat-num" id="statYears" data-count="15" data-suffix="+">0+</div><div class="stat-label">Years Experience</div></div>
   <div class="stat-item"><div class="stat-num">FAST</div><div class="stat-label">Response Time</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free Estimates</div></div>
-  <div class="stat-item"><div class="stat-num" style="font-size:1.6rem;letter-spacing:0.1em;">★★★★★</div><div class="stat-label">5-Star Rated</div></div>
+  <div class="stat-item"><div class="stat-num" id="statEstimates" data-count="100" data-suffix="%">0%</div><div class="stat-label">Free Estimates</div></div>
+  <div class="stat-item"><div class="stat-num stars" style="gap:2px;"></div><div class="stat-label">5-Star Rated</div></div>
 </div>
 
 <section class="contact" id="contact" aria-label="Contact JLM Servicing">
   <div class="contact-left reveal">
     <h2>Let's Talk</h2>
     <div class="cinfo">
-      <div class="cinfo-item"><div class="cinfo-icon">📞</div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon">📍</div><div><div class="cinfo-label">Location</div><div class="cinfo-val">3212 Seminole Trail, Sherwood, AR 72120</div></div></div>
-      <div class="cinfo-item"><div class="cinfo-icon">🕐</div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sun: 7AM – 7PM<br><span style="color:var(--green-light)">We'll get back to you as soon as possible</span></div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="cinfo-label">Phone</div><div class="cinfo-val"><a href="tel:5013517714">(501) 351-7714</a></div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cinfo-label">Location</div><div class="cinfo-val">3212 Seminole Trail, Sherwood, AR 72120</div></div></div>
+      <div class="cinfo-item"><div class="cinfo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="cinfo-label">Hours</div><div class="cinfo-val">Mon–Sun: 7AM – 7PM<br><span style="color:var(--green-light)">We'll get back to you as soon as possible</span></div></div></div>
     </div>
   </div>
   <div class="contact-right reveal">
@@ -553,30 +564,30 @@
     <h2>FAQs</h2>
   </div>
   <div class="faq-list">
-    <details class="faq-item" open>
-      <summary>What services does JLM Servicing offer?</summary>
-      <p>We offer tree cutting &amp; removal, tree trimming &amp; pruning, stump grinding &amp; root removal, roof replacement, roof repair, and roofing upgrades — all across Sherwood and Central Arkansas, with free estimates on every job.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How much does tree cutting cost in Arkansas?</summary>
-      <p>Costs vary based on tree size, location, and condition. We give free, no-obligation estimates for every tree cutting job in Sherwood and across Central Arkansas.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Do you offer emergency tree cutting after a storm?</summary>
-      <p>Yes — we respond quickly to storm-damaged and fallen trees throughout Sherwood, North Little Rock, Jacksonville, and Little Rock, AR.</p>
-    </details>
-    <details class="faq-item">
-      <summary>What areas of Arkansas does JLM Servicing serve?</summary>
-      <p>We're based in Sherwood, AR and serve all of Central Arkansas, including North Little Rock, Jacksonville, Little Rock, and Cabot.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is JLM Servicing insured for tree cutting and removal work?</summary>
-      <p>Yes, we're fully insured for all tree cutting, tree removal, stump grinding, and roofing work.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Does JLM Servicing haul away debris after tree cutting?</summary>
-      <p>Yes — full cleanup and debris haul-off is included with every tree cutting and tree removal job, no extra charge.</p>
-    </details>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="true">What services does JLM Servicing offer?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap open"><div class="faq-a-inner"><p>We offer tree cutting &amp; removal, tree trimming &amp; pruning, stump grinding &amp; root removal, roof replacement, roof repair, and roofing upgrades — all across Sherwood and Central Arkansas, with free estimates on every job.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">How much does tree cutting cost in Arkansas?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p>Costs vary based on tree size, location, and condition. We give free, no-obligation estimates for every tree cutting job in Sherwood and across Central Arkansas.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Do you offer emergency tree cutting after a storm?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p>Yes — we respond quickly to storm-damaged and fallen trees throughout Sherwood, North Little Rock, Jacksonville, and Little Rock, AR.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">What areas of Arkansas does JLM Servicing serve?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p>We're based in Sherwood, AR and serve all of Central Arkansas, including North Little Rock, Jacksonville, Little Rock, and Cabot.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Is JLM Servicing insured for tree cutting and removal work?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p>Yes, we're fully insured for all tree cutting, tree removal, stump grinding, and roofing work.</p></div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">Does JLM Servicing haul away debris after tree cutting?<span class="faq-icon">+</span></button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p>Yes — full cleanup and debris haul-off is included with every tree cutting and tree removal job, no extra charge.</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -593,10 +604,10 @@
     <h2>Serving Central Arkansas<br>Since 2009.</h2>
     <p>JLM Servicing is a family owned tree cutting and tree removal company based in Sherwood, AR. Our experienced tree surgeons handle everything from tree cutting, tree removal, and stump grinding to tree root removal and roofing — at affordable prices with no surprises. We serve Sherwood, North Little Rock, Jacksonville, Little Rock, and all of Central Arkansas.</p>
     <div class="trust-list">
-      <div class="trust-item"><span>🛡️</span><div><strong>Fully Insured</strong><small>Your property is protected on every job</small></div></div>
-      <div class="trust-item"><span>💵</span><div><strong>Free Estimates</strong><small>No obligation, upfront pricing always</small></div></div>
-      <div class="trust-item"><span>👨‍👩‍👧</span><div><strong>Family Owned & Operated</strong><small>Sherwood, AR — we're your neighbors</small></div></div>
-      <div class="trust-item"><span>⚡</span><div><strong>Fast Response</strong><small>We get back to you as soon as possible</small></div></div>
+      <div class="trust-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><strong>Fully Insured</strong><small>Your property is protected on every job</small></div></div>
+      <div class="trust-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.34-2.5-3-2.5s-3 1.1-3 2.5 1.34 2.2 3 2.5c1.66.3 3 1.1 3 2.5s-1.34 2.5-3 2.5-3-1.1-3-2.5"/></svg></span><div><strong>Free Estimates</strong><small>No obligation, upfront pricing always</small></div></div>
+      <div class="trust-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a6 6 0 0 0-12 0"/><circle cx="12" cy="8" r="4"/><path d="M22 20.5a4.5 4.5 0 0 0-3.5-4.4M2 20.5A4.5 4.5 0 0 1 5.5 16.1"/></svg></span><div><strong>Family Owned & Operated</strong><small>Sherwood, AR — we're your neighbors</small></div></div>
+      <div class="trust-item"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><div><strong>Fast Response</strong><small>We get back to you as soon as possible</small></div></div>
     </div>
   </div>
 </section>
@@ -626,84 +637,84 @@
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Best stump grinding service in Central Arkansas. Had a huge stump removed in Sherwood and they left the yard spotless. Highly recommend JLM!</p>
-        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Best tree removal service in Central Arkansas. Trimmed several large trees in North Little Rock, incredible results, left everything spotless.</p>
-        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Honest about what needed to be done, fair pricing on my roof repair in Jacksonville. Didn't try to upsell me. Customer for life.</p>
-        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Second time using JLM and just as impressed as the first. Quick response, fair pricing, and the crew treated our yard like it was their own.</p>
-        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Had a huge oak leaning on the house after a storm. Got several quotes and JLM's was the best by far — Luke even showed us proof of insurance before starting.</p>
-        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Just needed the canopy raised on one tree, and they still brought the same care and communication as a bigger job. Cleanup was spotless.</p>
-        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Our neighbor recommended JLM and we understand why now. They even cleared debris that landed on the neighbor's driveway without being asked.</p>
-        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi">
         <div class="testi-quote">"</div>
         <p>Needed three trees down in a tight backyard and figured it'd take all day. Crew handled it fast, careful, and the price was more than fair.</p>
-        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars"></div></div></div>
       </div>
 
       <!-- Set B (duplicate for seamless loop) -->
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Best stump grinding service in Central Arkansas. Had a huge stump removed in Sherwood and they left the yard spotless. Highly recommend JLM!</p>
-        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Michael R. — Sherwood, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Best tree removal service in Central Arkansas. Trimmed several large trees in North Little Rock, incredible results, left everything spotless.</p>
-        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra T. — North Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Honest about what needed to be done, fair pricing on my roof repair in Jacksonville. Didn't try to upsell me. Customer for life.</p>
-        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David K. — Jacksonville, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Second time using JLM and just as impressed as the first. Quick response, fair pricing, and the crew treated our yard like it was their own.</p>
-        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda P. — Sherwood, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Had a huge oak leaning on the house after a storm. Got several quotes and JLM's was the best by far — Luke even showed us proof of insurance before starting.</p>
-        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chris B. — North Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Just needed the canopy raised on one tree, and they still brought the same care and communication as a bigger job. Cleanup was spotless.</p>
-        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name">Rachel M. — Jacksonville, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Our neighbor recommended JLM and we understand why now. They even cleared debris that landed on the neighbor's driveway without being asked.</p>
-        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Tyler H. — Little Rock, AR</div><div class="stars"></div></div></div>
       </div>
       <div class="testi" aria-hidden="true">
         <div class="testi-quote">"</div>
         <p>Needed three trees down in a tight backyard and figured it'd take all day. Crew handled it fast, careful, and the price was more than fair.</p>
-        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars">★★★★★</div></div></div>
+        <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jason W. — Cabot, AR</div><div class="stars"></div></div></div>
       </div>
     </div>
   </div>
@@ -748,6 +759,47 @@
     mobileMenu.classList.remove('open');
     hamburger.classList.remove('active');
   }
+  // Render 5-star SVG icons into all .stars containers
+  const starSVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+  document.querySelectorAll('.stars').forEach(el => {
+    el.innerHTML = starSVG.repeat(5);
+  });
+
+  // Scroll-triggered counter animation for stats bar
+  function animateCount(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statEls = [document.getElementById('statYears'), document.getElementById('statEstimates')].filter(Boolean);
+  if (statEls.length) {
+    const statObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statEls.forEach(animateCount);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    statObserver.observe(document.querySelector('.stats-bar'));
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.nextElementSibling.classList.toggle('open');
+    });
+  });
   // Form submission
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
